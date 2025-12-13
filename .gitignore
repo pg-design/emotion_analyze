@@ -2,5 +2,7 @@
 .venv/
 __pycache__/
 *.pyc
-.DS_Storevideos/
+.DS_Store
+**/.DS_Store
+videos/
 *.mp4
