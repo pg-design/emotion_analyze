@@ -1,0 +1,18 @@
+numpy==1.26.4
+pandas==2.1.4
+openpyxl>=3.1.2
+Pillow>=9.5
+tqdm>=4.66
+
+# CV stack (headless)
+opencv-python-headless==4.9.0.80
+
+# ML
+torch==2.3.1+cpu
+torchvision==0.18.1+cpu
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+deepface==0.0.96
+facenet-pytorch==2.5.3
+timm==0.9.16
+emotiefflib==1.1.1
