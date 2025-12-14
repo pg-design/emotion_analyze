@@ -16,7 +16,7 @@ Pipeline for Sheila to quantify a target guest's emotions across many videos.
 
 ```bash
 # clone the repo, then:
-bash scripts/setup_macos_arm64.sh
+bash script/setup_macos_arm64.sh
 source .venv/bin/activate
 ```
 
