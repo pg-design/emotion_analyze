@@ -6,26 +6,14 @@
 set -euo pipefail
 
 echo "🔧 Creating virtual environment .venv ..."
-python3 -m venv .venv
+python3.10 -m venv .venv
 source .venv/bin/activate
 
 echo "⬆️  Upgrading pip/setuptools/wheel ..."
 python -m pip install --upgrade pip setuptools wheel
 
-echo "📦 Installing base numeric stack (TF 2.13 friendly) ..."
-pip install "numpy==1.24.3" "pandas==2.1.4" "protobuf<5"
-
-echo "🖼️  Installing vision/IO libs ..."
-pip install "opencv-python-headless==4.9.0.80" "Pillow>=9.5" "openpyxl>=3.1.2" "tqdm>=4.66"
-
-echo "🧠 Installing TensorFlow for macOS + Metal (needed by DeepFace) ..."
-pip install "tensorflow-macos==2.13.0" "tensorflow-metal==1.0.*"
-
-echo "🔥 Installing PyTorch CPU wheels (stable on macOS ARM) ..."
-pip install --index-url https://download.pytorch.org/whl/cpu torch==2.2.2 torchvision==0.17.2
-
-echo "🤖 Installing model/tooling libraries ..."
-pip install "timm==0.9.16" "facenet-pytorch==2.5.3" "deepface==0.0.96" "emotiefflib==0.2.2"
+echo "📦 Installing dependencies from requirements.txt ..."
+pip install -r requirements.txt
 
 echo "🧪 Quick import test ..."
 python - <<'PY'

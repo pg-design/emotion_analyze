@@ -118,10 +118,12 @@ I would think that the software should sample per N number of frames, with some 
 
 ---
 
-## 7) Model references (
+## 7) Model references 
 
 - **MTCNN** (face detection) — arXiv: https://arxiv.org/abs/1604.02878
+
 - **VGG-Face** (ID verification backbone, via DeepFace) — BMVC 2015: http://www.robots.ox.ac.uk/~vgg/publications/2015/Parkhi15/ • DeepFace: https://github.com/serengil/deepface
+
 - **EmotiEffLib `enet_b0_8_va_mtl`** (discrete emotions + valence/arousal) — https://github.com/sb-ai-lab/EmotiEffLib
 
 
