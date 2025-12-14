@@ -3,7 +3,9 @@
 Pipeline for Sheila to quantify a target guest's emotions across many videos.
 
 **Input:** a folder of videos, plus one reference image per guest (e.g., `refs/TimH.jpg`, `refs/FreekVonk.jpg`)  
+
 **Process:** on each sampled frame → detect faces → verify which face matches the supplied reference (DeepFace default distance & threshold) → run a lightweight emotion model (EmotiEffLib) → save results  
+
 **Output:** a single aggregated Excel workbook across all videos and debug images
 
 ---
@@ -37,6 +39,7 @@ python detect_emotion.py --input-dir videos --refs-dir refs --frame-interval 40 
 ```
 
 - `--frame-interval 40` samples roughly every 1.6s on 24–25 fps footage (increase to go faster).
+
 - Put one photo per guest in `refs/` (e.g., `TimH.jpg`). The tool picks the photo whose filename appears inside the video filename.  
   Examples: `TimH_arjenlubach.mp4` → `refs/TimH.jpg`, `FreekV_talk1.mp4` → `refs/FreekV.jpg`.
 
@@ -89,8 +92,8 @@ Padding ratio around the detected face for verification (e.g., 0.20 = 20%). Defa
 ## 4) Reference images
 
 - Place guest photos in `refs/` named after the guest (e.g., `TimH.jpg`, `FreekV.jpg`).
-- A video uses the ref whose name appears in the video filename (case-insensitive). If no match is found, that video is skipped.
-- Use clean, frontal photos. A small padding is applied to the candidate crop to help DeepFace align robustly.
+- A video uses the ref whose name appears in the video filename. If no match is found, that video is skipped.
+- Use clean, frontal photos. A small padding is applied to the candidate crop to help DeepFace align.
 
 ---
 
