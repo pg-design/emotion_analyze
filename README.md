@@ -51,13 +51,13 @@ python detect_emotion.py --input-dir videos --refs-dir refs --frame-interval 40 
 Folder to scan for videos. Default: `videos`
 
 **`--refs-dir <DIR>`**  
-Folder of reference images. Auto-match by filename substring (e.g., `refs/TimH.jpg` matches `TimH_*.mp4`). Required.
+Folder of reference images. Match by filename substring (e.g., `refs/TimH.jpg` matches `TimH_*.mp4`).
 
 **`--frame-interval <INT>`**  
-Sample every Nth frame. Larger = faster, fewer samples. Default: `10`
+Sample every Nth frame. Default: `10`
 
 **`--max-frames <INT>`**  
-Hard cap per video. 0 = no cap. Default: `0`
+Maximum number of frames to analyze per video. Set to `0` to disable the cap and process all available frames. Default: `0`.
 
 **`--aggregate-out <PATH>`**  
 Combined Excel across all processed videos. Default: `emotion_data_ALL.xlsx`
