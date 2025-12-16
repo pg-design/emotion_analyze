@@ -12,7 +12,7 @@ Pipeline for Sheila to quantify a target guest's emotions across many videos.
 
 ## 1) Quick start (macOS Apple Silicon)
 
-**Prereqs:** Python **3.10**
+**Prereqs:** Python **3.10+** (tested with Python 3.10)  
 
 ```bash
 # clone the repo, then:
@@ -41,7 +41,8 @@ python detect_emotion.py --input-dir videos --refs-dir refs --frame-interval 40 
 - `--frame-interval 40` samples roughly every 1.6s on 24–25 fps footage (increase to go faster).
 
 - Put one photo per guest in `refs/` (e.g., `TimH.jpg`). The tool picks the photo whose filename appears inside the video filename.  
-  Examples: `TimH_arjenlubach.mp4` → `refs/TimH.jpg`, `FreekV_talk1.mp4` → `refs/FreekV.jpg`.
+
+Examples: `TimH_arjenlubach.mp4` → `refs/TimH.jpg`, `FreekV_talk1.mp4` → `refs/FreekV.jpg`.
 
 ---
 
@@ -120,9 +121,9 @@ I would think that the software should sample per N number of frames, with some 
 
 ## 7) Future work
 
-- **speech detection + transcription** I believe transcript and audio detection would make sheila’s work easier. multiple topics are often discussed at the same time, and manual sorting of clips (of the same topic across hosts) is probably still required. I would think it will also reduce false “guest present” moments from b-roll/inserts.
+- **Speech detection + transcription** I believe transcript and audio detection would make sheila’s work easier. multiple topics are often discussed at the same time, and manual sorting of clips (of the same topic across hosts) is probably still required. I would think it will also reduce false “guest present” moments from b-roll/inserts.
 
-- **more model comparison** Compare different face detectors and emotion models on the same labeled subset would be needed to understand the accuracy of the tool. for example, a model optimized directly for continuous valence/arousal could outperform a strong discrete-emotion classifier.
+- **More model comparison** Compare different face detectors and emotion models on the same labeled subset would be needed to understand the accuracy of the tool. for example, a model optimized directly for continuous valence/arousal could outperform a strong discrete-emotion classifier.
 
 
 ---
