@@ -120,29 +120,7 @@ I would think that the software should sample per N number of frames, with some 
 
 ## 7) Future work
 
-- **Systematic validation against human labels**  
-  Collect a small, manually annotated dataset (Sheila + 1–2 assistants) with frame-level emotion labels and "guest present/absent" flags. Quantify accuracy, calibration of valence/arousal, and inter-rater agreement; this grounds the tool's reliability in ground truth.
-
-- **Better guest tracking over time**  
-  Replace per-frame verification with temporal tracking (e.g., face tracking or re-identification) to reduce false guest detections on B-roll, audience shots, and hosts. Evaluate how much this improves stability of emotion time series.
-
-- **Robustness to domain shifts**  
-  Stress-test on different shows: lighting, camera angles, makeup, skin tone, and compression artifacts. Document where performance degrades and whether simple quality filters (blur detection, face size thresholds) help.
-
-- **Uncertainty and quality flags**  
-  Expose confidence (entropy of softmax, valence/arousal frame variance) and mark low-quality detections (tiny faces, occlusions, poor alignment). This lets Sheila down-weight unreliable segments.
-
-- **Ablation and model comparison study**  
-  Compare different face detectors and emotion models (including more recent backbones) on a labeled validation set. Models can outperform despite lower raw accuracy if: (1) training data matches your broadcast domain better than in-the-wild data, (2) temporal smoothing stabilizes noisy frame-level predictions, (3) the detector produces more consistent face crops, or (4) the model is better calibrated to human judgments. Report trade-offs between speed, accuracy, and stability.
-
-- **Temporal smoothing and episode-level summaries**  
-  Explore temporal models (moving averages, HMMs, lightweight RNNs) to smooth frame-level noise and produce segment- or topic-level affect summaries closer to how humans perceive mood over a conversation.
-
-- **Joint modeling of speech and video**  
-  Align transcripts/ASR with emotion curves, detect topic boundaries, and evaluate whether certain topics systematically shift valence/arousal for specific guests. Transcription would also reduce false "guest present" moments from B-roll and inserts.
-
-- **Calibration to Sheila's subjective scale**  
-  Have Sheila re-score a subset of segments and learn a simple mapping (linear regression) from model outputs to her 1–5 intensity rating. This personalizes the tool and makes outputs directly interpretable for her workflow.
+- **speech detection + transcription** I believe transcript and audio detection would make sheila’s work easier. multiple topics are often discussed at the same time, and manual sorting of clips (of the same topic across hosts) is probably still required. I would think it will also reduce false “guest present” moments from b-roll/inserts.
 
 - **more model comparison** Compare different face detectors and emotion models on the same labeled subset would be needed to understand the accuracy of the tool. for example, a model optimized directly for continuous valence/arousal could outperform a strong discrete-emotion classifier.
 
