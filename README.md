@@ -2,7 +2,7 @@
 
 Pipeline for Sheila to quantify a target guest's emotions across many videos.
 
-**Input:** a folder of videos, plus one reference image per guest (e.g., `refs/TimH.jpg`, `refs/FreekVonk.jpg`)  
+**Input:** a folder of videos, plus one reference image per guest (e.g., `refs/TimH.jpg`, `refs/FreekV.jpg`)  
 
 **Process:** on each sampled frame → detect faces → verify which face matches the supplied reference (DeepFace default distance & threshold) → run a lightweight emotion model (EmotiEffLib) → save results  
 
@@ -27,7 +27,7 @@ your-project/
   detect_emotion.py
   videos/          # put .mp4/.mov/.mkv/.avi here (e.g., TimH_arjenlubach.mp4, FreekV_1.mp4)
   refs/            # reference images (e.g., TimH.jpg, FreekV.jpg)
-  scripts/
+  script/
     setup_macos_arm64.sh
   requirements.txt
 ```
@@ -95,6 +95,19 @@ Padding ratio around the detected face for verification (e.g., 0.20 = 20%). Defa
 - Place guest photos in `refs/` named after the guest (e.g., `TimH.jpg`, `FreekV.jpg`).
 - A video uses the ref whose name appears in the video filename. If no match is found, that video is skipped.
 - Use clean, frontal photos. A small padding is applied to the candidate crop to help DeepFace align.
+
+### Media sources used for local testing 
+I use the following videos to run local tests. 
+
+- René ziet Tim Hofman gesprek kapen in talkshow: 'Stuitende arrogantie!' | VANDAAG INSIDE — https://www.youtube.com/watch?v=JJX_AA2CFeo&t=31s
+- Tim Hofman | De Avondshow met Arjen Lubach (S2) — https://www.youtube.com/watch?v=lfKnWTGruzU
+- Freek Vonk beantwoordt vragen van kinderen — https://www.youtube.com/watch?v=fVamZyHRh1E&t=221s
+- Freek Vonk: "Elke 5 minuten overlijdt er iemand aan de beet van een gifslang" | Op1 — https://www.youtube.com/watch?v=Q2ZQrrvlB-Q
+
+Usage guide:
+- Download videos to `videos/`.
+- Place one guest reference photo in `refs/` (e.g., `TimH.jpg`).
+- Name videos to include the guest key (e.g., `TimH_segment1.mp4` → matches `refs/TimH.jpg`).
 
 ---
 
