@@ -46,7 +46,7 @@ Examples: `TimH_arjenlubach.mp4` → `refs/TimH.jpg`, `FreekV_talk1.mp4` → `re
 
 ---
 
-## 2) Args (short)
+## 2) Args
 
 **`-i, --input-dir <DIR>`**  
 Folder to scan for videos. Default: `videos`
