@@ -5,8 +5,27 @@
 
 set -euo pipefail
 
+# Determine which Python to use: prefer python3.10, fall back to python3
+if command -v python3.10 &> /dev/null; then
+  PYTHON="python3.10"
+elif command -v python3 &> /dev/null; then
+  PYTHON="python3"
+  # Validate version is 3.10 or higher
+  VERSION=$($PYTHON --version 2>&1 | awk '{print $2}')
+  MAJOR=$(echo $VERSION | cut -d. -f1)
+  MINOR=$(echo $VERSION | cut -d. -f2)
+  if [ "$MAJOR" -lt 3 ] || ([ "$MAJOR" -eq 3 ] && [ "$MINOR" -lt 10 ]); then
+    echo "❌ Error: Python 3.10+ required, but found $VERSION"
+    exit 1
+  fi
+else
+  echo "❌ Error: python3.10 or python3 not found. Please install Python 3.10 or later."
+  exit 1
+fi
+
+echo "✓ Using Python: $PYTHON ($($PYTHON --version 2>&1))"
 echo "🔧 Creating virtual environment .venv ..."
-python3.10 -m venv .venv
+$PYTHON -m venv .venv
 source .venv/bin/activate
 
 echo "⬆️  Upgrading pip/setuptools/wheel ..."
